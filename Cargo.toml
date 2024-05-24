@@ -1,0 +1,19 @@
+[package]
+name = "moonlight-uwp-launcher"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[target.'cfg(target_os = "windows")'.dependencies]
+lnk_parser = { path = "./lnk_parser-master" }
+winparsingtools = { path = "./winparsingtools-master" }
+serde = "1.0.152"
+sysinfo = "0.27.7"
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
